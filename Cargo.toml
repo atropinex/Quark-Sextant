@@ -1,0 +1,34 @@
+[package]
+name = "quark-sextant"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+description = "Quark-Sextant: a visual-only script flow viewer. Spot spaghetti code at a glance."
+license = "Apache-2.0"
+
+[lib]
+name = "quark_sextant"
+path = "src/lib.rs"
+
+# The viewer (the actual app)
+[[bin]]
+name = "quark-sextant"
+path = "src/main.rs"
+
+# The launcher (project hub, starts the viewer)
+[[bin]]
+name = "quark-sextant-launcher"
+path = "src/bin/launcher.rs"
+
+[dependencies]
+eframe = "0.29"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+regex = "1"
+dirs = "5"
+rfd = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
